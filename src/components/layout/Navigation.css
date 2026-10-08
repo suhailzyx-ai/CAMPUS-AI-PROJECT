@@ -1,0 +1,389 @@
+.campus-app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--color-slate-subtle);
+  overflow-x: hidden;
+}
+
+/* Header - Clean White Header with Subtle Bottom Border */
+.campus-header {
+  height: 64px;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-border-slate);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.campus-header__left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.campus-header__mobile-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--color-border-slate);
+  border-radius: var(--radius-sm);
+  color: var(--color-dark-blue);
+  cursor: pointer;
+  padding: 8px;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.campus-header__mobile-toggle:hover {
+  background-color: var(--color-soft-blue);
+  color: var(--color-primary-blue);
+}
+
+.campus-header__role-badge {
+  display: inline-flex;
+}
+
+.campus-header__right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.campus-header__user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.campus-header__avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.campus-header__avatar--student { background-color: var(--color-primary-blue); }
+.campus-header__avatar--faculty { background-color: var(--color-faculty); }
+.campus-header__avatar--admin { background-color: var(--color-admin); }
+
+.campus-header__user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.campus-header__user-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-dark-blue);
+  line-height: 1.2;
+}
+
+.campus-header__user-sub {
+  font-size: 0.72rem;
+  color: var(--color-text-secondary);
+}
+
+.campus-header__logout {
+  background: none;
+  border: 1px solid var(--color-border-slate);
+  padding: 8px;
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.campus-header__logout:hover {
+  background-color: #FEE2E2;
+  color: var(--color-destructive);
+  border-color: #FCA5A5;
+}
+
+/* App Body (White Sidebar + Subtle Borders) */
+.campus-app-body {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  position: relative;
+}
+
+/* Sidebar Backdrop on Mobile / Tablet */
+.campus-sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 47, 95, 0.4);
+  backdrop-filter: blur(2px);
+  z-index: 998;
+  animation: backdropFadeIn 0.2s ease-out;
+}
+
+@keyframes backdropFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* White Sidebar with Subtle Border */
+.campus-sidebar {
+  width: 250px;
+  background-color: var(--color-white);
+  color: var(--color-text-primary);
+  border-right: 1px solid var(--color-border-slate);
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-shrink: 0;
+  transition: transform var(--transition-normal);
+  box-sizing: border-box;
+}
+
+.campus-sidebar__top-mobile-header {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--color-border-slate);
+}
+
+.campus-sidebar__close-btn {
+  background: none;
+  border: 1px solid var(--color-border-slate);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  padding: 8px;
+  min-width: 40px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.campus-sidebar__close-btn:hover {
+  background-color: var(--color-soft-blue);
+  color: var(--color-primary-blue);
+}
+
+.campus-sidebar__section-title {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-text-secondary);
+  margin-bottom: 12px;
+  padding-left: 12px;
+}
+
+.campus-sidebar__nav-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campus-sidebar__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  min-height: 44px;
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  box-sizing: border-box;
+}
+
+.campus-sidebar__item:hover {
+  background-color: var(--color-slate-subtle);
+  color: var(--color-primary-blue);
+}
+
+/* Blue Active State Requirement */
+.campus-sidebar__item--active {
+  background-color: var(--color-soft-blue) !important;
+  color: var(--color-primary-blue) !important;
+  font-weight: 700;
+  border-left: 3px solid var(--color-primary-blue);
+}
+
+.campus-sidebar__item-icon {
+  flex-shrink: 0;
+}
+
+.campus-sidebar__item-label {
+  flex: 1;
+  white-space: normal;
+}
+
+.campus-sidebar__badge {
+  background-color: var(--color-destructive);
+  color: var(--color-white);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+/* Sidebar Coursera Style Promo Banner */
+.campus-sidebar__banner {
+  background-color: var(--color-soft-blue);
+  padding: 18px 16px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-soft-blue-border);
+  text-align: center;
+  margin-top: 20px;
+}
+
+.campus-sidebar__banner-icon {
+  color: var(--color-primary-blue);
+  margin-bottom: 8px;
+}
+
+.campus-sidebar__banner h4 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-dark-blue);
+  margin-bottom: 4px;
+}
+
+.campus-sidebar__banner p {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+.campus-sidebar__version {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 12px;
+  background-color: var(--color-slate-subtle);
+  border: 1px solid var(--color-border-slate);
+  border-radius: var(--radius-md);
+  font-size: 0.74rem;
+  color: var(--color-text-secondary);
+  margin-top: 20px;
+}
+
+.campus-sidebar__version-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-success);
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+/* Main Content Area */
+.campus-main-content {
+  flex: 1;
+  padding: 32px 36px;
+  overflow-y: auto;
+  max-width: 1440px;
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+/* ===================================================
+   RESPONSIVE BREAKPOINTS: Tablet & Mobile
+   =================================================== */
+
+/* Laptop & Tablet (1024px and below) */
+@media (max-width: 1023px) {
+  .campus-header {
+    padding: 0 16px;
+  }
+
+  .campus-header__mobile-toggle {
+    display: inline-flex;
+  }
+
+  .campus-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: min(290px, 84vw);
+    height: 100vh;
+    z-index: 999;
+    transform: translateX(-100%);
+    box-shadow: var(--shadow-lg);
+    overflow-y: auto;
+  }
+
+  .campus-sidebar--mobile-open {
+    transform: translateX(0);
+  }
+
+  .campus-sidebar__top-mobile-header {
+    display: flex;
+  }
+
+  .campus-main-content {
+    padding: 24px 20px;
+  }
+}
+
+/* Mobile (640px and below) */
+@media (max-width: 639px) {
+  .campus-header {
+    height: 60px;
+    padding: 0 12px;
+  }
+
+  .campus-header__left {
+    gap: 8px;
+  }
+
+  .campus-header__role-badge {
+    display: none; /* Hide badge on mobile header to save space for logo & toggle */
+  }
+
+  .campus-header__right {
+    gap: 8px;
+  }
+
+  .campus-header__user-info {
+    display: none; /* Keep avatar for mobile, hide name to prevent clipping */
+  }
+
+  .campus-main-content {
+    padding: 16px 12px;
+  }
+}
+
+/* Small Mobile (380px and below) */
+@media (max-width: 380px) {
+  .campus-header {
+    padding: 0 8px;
+  }
+  
+  .campus-main-content {
+    padding: 12px 8px;
+  }
+}

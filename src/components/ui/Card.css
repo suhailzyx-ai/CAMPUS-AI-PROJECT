@@ -1,0 +1,102 @@
+.campus-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast);
+  width: 100%;
+  box-sizing: border-box;
+  min-height: auto;
+}
+
+.campus-card--bordered {
+  border: 1px solid var(--color-border-slate);
+}
+
+.campus-card--hoverable {
+  cursor: pointer;
+}
+.campus-card--hoverable:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-soft-blue-border);
+  transform: translateY(-2px);
+}
+
+/* Padding variants */
+.campus-card--pad-none { padding: 0; }
+.campus-card--pad-sm { padding: 14px 16px; }
+.campus-card--pad-md { padding: 22px 24px; }
+.campus-card--pad-lg { padding: 30px 32px; }
+
+@media (max-width: 639px) {
+  .campus-card--pad-sm { padding: 12px 14px; }
+  .campus-card--pad-md { padding: 18px 16px; }
+  .campus-card--pad-lg { padding: 22px 18px; }
+}
+
+/* Badge styles - Coursera Soft Aesthetic */
+.campus-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  white-space: normal;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.campus-badge--sm {
+  padding: 4px 10px;
+  font-size: 0.74rem;
+  min-height: 22px;
+}
+
+.campus-badge--md {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  min-height: 26px;
+}
+
+/* Badge variants */
+.campus-badge--amber {
+  background-color: var(--color-amber-subtle);
+  color: #92400E;
+  border: 1px solid #FCD34D;
+}
+.campus-badge--navy {
+  background-color: var(--color-soft-blue);
+  color: var(--color-primary-blue);
+  border: 1px solid var(--color-soft-blue-border);
+}
+.campus-badge--slate {
+  background-color: var(--color-slate-subtle);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border-slate);
+}
+.campus-badge--student {
+  background-color: #EAF2FF;
+  color: #0056D2;
+  border: 1px solid #C6DBFF;
+}
+.campus-badge--faculty {
+  background-color: #F3E8FF;
+  color: #6D28D9;
+  border: 1px solid #DDD6FE;
+}
+.campus-badge--admin {
+  background-color: #CCFBF1;
+  color: #0D9488;
+  border: 1px solid #99F6E4;
+}
+.campus-badge--success {
+  background-color: #DCFCE7;
+  color: #15803D;
+  border: 1px solid #BBF7D0;
+}
+.campus-badge--destructive {
+  background-color: #FEE2E2;
+  color: #B91C1C;
+  border: 1px solid #FCA5A5;
+}

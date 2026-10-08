@@ -1,0 +1,119 @@
+/* Campus AI — Coursera-Inspired Premium Academic Design System Tokens */
+:root {
+  /* Coursera-Inspired Academic Blue System */
+  --color-primary-blue: #0056D2;      /* Primary Action & Brand Blue (Coursera style) */
+  --color-blue-hover: #00419E;
+  --color-dark-blue: #0F2F5F;         /* Deep Navy Blue for titles & strong structural text */
+  --color-soft-blue: #EAF2FF;         /* Soft Blue for active states & subtle backgrounds */
+  --color-soft-blue-border: #C6DBFF;
+
+  --color-slate-subtle: #F8FAFC;     /* Clean Page background */
+  --color-border-slate: #E2E8F0;     /* Subtle Crisp border */
+  --color-border-subtle: #F1F5F9;
+
+  --color-accent-amber: #F59E0B;     /* Amber reserved exclusively for AI & highlights */
+  --color-amber-hover: #D97706;
+  --color-amber-subtle: #FEF3C7;
+
+  --color-text-primary: #172033;     /* Primary Dark Charcoal text */
+  --color-text-secondary: #64748B;   /* Secondary Muted text */
+  --color-white: #FFFFFF;           /* Card & Surface white */
+
+  /* Role & Status Colors */
+  --color-student: #0056D2;
+  --color-faculty: #6D28D9;
+  --color-admin: #0D9488;
+  --color-success: #16A34A;
+  --color-destructive: #DC2626;
+
+  /* Typography */
+  --font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  
+  /* Refined Radii (14px - 16px) & Softer Shadows */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 1px 2px 0 rgba(15, 23, 42, 0.02);
+  --shadow-md: 0 4px 12px -2px rgba(0, 86, 210, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 12px 24px -4px rgba(15, 47, 95, 0.08), 0 4px 8px -2px rgba(15, 23, 42, 0.03);
+
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Touch Target */
+  --min-touch-target: 44px;
+}
+
+/* Base Reset & Global Typography */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-slate-subtle);
+  color: var(--color-text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Text Visibility & Natural Wrapping Guarantees */
+h1, h2, h3, h4, h5, h6,
+p, span, strong, em, b, i,
+a, label, li, dt, dd,
+td, th, button, input, select, textarea {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Responsive Images & Media */
+img, svg, video, canvas {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+/* Accessibility Focus States */
+:focus-visible {
+  outline: 2px solid var(--color-primary-blue);
+  outline-offset: 2px;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-slate-subtle);
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}

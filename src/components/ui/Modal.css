@@ -1,0 +1,126 @@
+.campus-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 47, 95, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: modalFadeIn 0.2s ease-out;
+  box-sizing: border-box;
+}
+
+.campus-modal-container {
+  width: 100%;
+  max-width: 580px;
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 40px);
+  max-height: calc(100dvh - 40px);
+  overflow: hidden;
+  animation: modalSlideUp 0.25s ease-out;
+  border: 1px solid var(--color-border-slate);
+  box-sizing: border-box;
+}
+
+.campus-modal-header {
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-border-slate);
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.campus-modal-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--color-dark-blue);
+  line-height: 1.2;
+}
+
+.campus-modal-close {
+  background: transparent;
+  border: 1px solid var(--color-border-slate);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  padding: 8px;
+  min-width: 36px;
+  min-height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+.campus-modal-close:hover {
+  background-color: var(--color-soft-blue);
+  color: var(--color-primary-blue);
+}
+
+.campus-modal-body {
+  padding: 24px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  flex: 1;
+}
+
+.campus-modal-footer {
+  padding: 16px 24px;
+  border-top: 1px solid var(--color-border-slate);
+  background-color: var(--color-slate-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+@media (max-width: 639px) {
+  .campus-modal-overlay {
+    padding: 10px;
+    align-items: flex-end;
+  }
+
+  .campus-modal-container {
+    max-height: calc(100dvh - 20px);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .campus-modal-header {
+    padding: 14px 18px;
+  }
+
+  .campus-modal-body {
+    padding: 18px 16px;
+  }
+
+  .campus-modal-footer {
+    padding: 14px 16px;
+    flex-direction: column-reverse;
+    gap: 8px;
+  }
+
+  .campus-modal-footer > * {
+    width: 100%;
+  }
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalSlideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,298 @@
+.campus-faculty-dash {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: 100%;
+}
+
+.campus-faculty-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  width: 100%;
+}
+
+.campus-faculty-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-dark-blue);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.campus-faculty-subtitle {
+  font-size: 0.92rem;
+  color: var(--color-text-secondary);
+  max-width: 780px;
+  margin-top: 4px;
+}
+
+/* Stats Cards Grid */
+.campus-faculty-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  width: 100%;
+}
+
+.campus-faculty-stat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 22px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.campus-faculty-stat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.campus-faculty-stat-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.campus-faculty-stat-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.campus-faculty-stat-icon--navy {
+  background-color: var(--color-soft-blue);
+  color: var(--color-primary-blue);
+  border: 1px solid var(--color-soft-blue-border);
+}
+.campus-faculty-stat-icon--amber {
+  background-color: var(--color-amber-subtle);
+  color: var(--color-accent-amber);
+  border: 1px solid #FCD34D;
+}
+
+.campus-faculty-stat-value {
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: var(--color-dark-blue);
+  line-height: 1.1;
+}
+
+.campus-faculty-stat-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-success);
+}
+
+.campus-faculty-stat-sub {
+  font-size: 0.78rem;
+  color: var(--color-text-secondary);
+}
+
+/* Filter Bar */
+.campus-faculty-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.campus-faculty-filter-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.campus-faculty-search-input {
+  flex: 1;
+  min-width: 260px;
+}
+
+/* Table styles - Refined Academic Hierarchy with Horizontal Touch Scroll */
+.campus-faculty-table-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 24px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.campus-faculty-table-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.campus-faculty-table-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--color-dark-blue);
+}
+
+.campus-faculty-table-sub {
+  font-size: 0.84rem;
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}
+
+.campus-faculty-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--color-border-slate);
+  border-radius: var(--radius-md);
+}
+
+.campus-table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.88rem;
+}
+
+.campus-table th {
+  padding: 14px 16px;
+  background-color: var(--color-slate-subtle);
+  color: var(--color-text-secondary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--color-border-slate);
+  white-space: nowrap;
+}
+
+.campus-table td {
+  padding: 16px;
+  border-bottom: 1px solid var(--color-border-slate);
+  color: var(--color-text-primary);
+  vertical-align: middle;
+}
+
+.campus-table tr:last-child td {
+  border-bottom: none;
+}
+
+.campus-table tr:hover td {
+  background-color: var(--color-soft-blue);
+}
+
+.campus-doc-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 220px;
+}
+
+.campus-doc-cell-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  background-color: #FEE2E2;
+  color: #DC2626;
+  border: 1px solid #FCA5A5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.campus-doc-cell-title {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--color-dark-blue);
+  line-height: 1.3;
+}
+
+.campus-doc-cell-sub {
+  font-size: 0.76rem;
+  color: var(--color-text-secondary);
+}
+
+.campus-table-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.campus-table-action-btn {
+  background: white;
+  border: 1px solid var(--color-border-slate);
+  border-radius: var(--radius-sm);
+  padding: 7px;
+  min-width: 34px;
+  min-height: 34px;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+.campus-table-action-btn:hover {
+  background-color: var(--color-soft-blue);
+  color: var(--color-primary-blue);
+  border-color: var(--color-soft-blue-border);
+}
+
+/* ===================================================
+   RESPONSIVE BREAKPOINTS: Faculty Dashboard
+   =================================================== */
+
+@media (max-width: 1099px) {
+  .campus-faculty-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .campus-faculty-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .campus-faculty-header button {
+    width: 100%;
+  }
+
+  .campus-faculty-filter-left {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .campus-faculty-search-input {
+    width: 100%;
+  }
+
+  .campus-faculty-table-card {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 599px) {
+  .campus-faculty-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}

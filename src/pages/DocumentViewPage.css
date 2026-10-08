@@ -1,0 +1,760 @@
+.campus-docview-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+/* Header */
+.campus-docview-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.campus-docview-header__left {
+  flex: 1;
+  min-width: 280px;
+}
+
+.campus-docview-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.86rem;
+  color: var(--color-primary-blue);
+  font-weight: 600;
+  text-decoration: none;
+}
+.campus-docview-back:hover {
+  text-decoration: underline;
+}
+
+.campus-docview-crumb {
+  font-size: 0.86rem;
+  color: var(--color-text-secondary);
+  margin-left: 6px;
+}
+
+.campus-docview-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.campus-docview-title {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: var(--color-dark-blue);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.campus-docview-badges {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.campus-docview-header__right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.campus-docview-icon-btn {
+  background: white;
+  border: 1px solid var(--color-border-slate);
+  border-radius: var(--radius-md);
+  padding: 9px;
+  min-width: 40px;
+  min-height: 40px;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+.campus-docview-icon-btn:hover {
+  background-color: var(--color-soft-blue);
+  color: var(--color-primary-blue);
+  border-color: var(--color-soft-blue-border);
+}
+
+/* Reader Split (2-Col Desktop, 1-Col Tablet/Mobile) */
+.campus-docview-split {
+  display: grid;
+  grid-template-columns: 1fr 390px;
+  gap: 24px;
+  align-items: start;
+  width: 100%;
+}
+
+/* Reader Card */
+.campus-docview-reader-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-slate);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.campus-docview-meta-banner {
+  padding: 14px 28px;
+  background-color: var(--color-slate-subtle);
+  border-bottom: 1px solid var(--color-border-slate);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.campus-docview-faculty-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.campus-docview-status-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.campus-docview-body {
+  padding: 36px 44px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.campus-docview-module-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-primary-blue);
+  letter-spacing: 0.08em;
+  display: block;
+}
+
+.campus-docview-sec-h1 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-dark-blue);
+  margin-top: 6px;
+  line-height: 1.3;
+}
+
+.campus-docview-sec-sub {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 28px;
+  line-height: 1.4;
+}
+
+.campus-docview-sec-h2 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--color-dark-blue);
+  margin-top: 28px;
+  margin-bottom: 10px;
+  line-height: 1.35;
+}
+
+.campus-docview-para {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--color-text-primary);
+  margin-bottom: 18px;
+}
+
+/* Highlighted Selected Text State */
+.campus-docview-selected-text-box {
+  position: relative;
+  background-color: var(--color-soft-blue);
+  border-left: 4px solid var(--color-primary-blue);
+  border-radius: var(--radius-sm);
+  padding: 18px 22px;
+  margin: 24px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.campus-docview-highlighted-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-dark-blue);
+  line-height: 1.55;
+}
+
+.campus-docview-floating-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.campus-docview-float-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 14px;
+  min-height: 34px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-slate);
+  background-color: white;
+  color: var(--color-dark-blue);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.campus-docview-float-btn:hover,
+.campus-docview-float-btn--active {
+  background-color: var(--color-primary-blue);
+  color: white;
+  border-color: var(--color-primary-blue);
+}
+
+.campus-docview-table-wrapper {
+  margin: 24px 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--color-border-slate);
+  border-radius: var(--radius-md);
+  width: 100%;
+}
+
+.campus-docview-table-wrapper .campus-table {
+  min-width: 580px;
+}
+
+.campus-docview-code-block {
+  background-color: #0F172A;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin: 24px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.campus-docview-code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 18px;
+  background-color: #1E293B;
+  color: #94A3B8;
+  font-size: 0.78rem;
+  font-family: monospace;
+}
+
+.campus-docview-code-copy {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #94A3B8;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.75rem;
+}
+.campus-docview-code-copy:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.campus-docview-code-content {
+  padding: 18px;
+  color: #F8FAFC;
+  font-size: 0.86rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: pre;
+}
+
+.campus-docview-reader-footer {
+  padding: 14px 28px;
+  background-color: var(--color-slate-subtle);
+  border-top: 1px solid var(--color-border-slate);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.84rem;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.campus-docview-page-nav,
+.campus-docview-zoom-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.campus-docview-page-btn {
+  background: white;
+  border: 1px solid var(--color-border-slate);
+  border-radius: var(--radius-sm);
+  padding: 6px 12px;
+  min-height: 32px;
+  cursor: pointer;
+  font-size: 0.84rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* AI Drawer */
+.campus-docview-ai-drawer {
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-slate);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 88px;
+  max-height: calc(100vh - 100px);
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.campus-docview-ai-header {
+  padding: 18px;
+  border-bottom: 1px solid var(--color-border-slate);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.campus-docview-ai-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.campus-docview-ai-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-soft-blue);
+  color: var(--color-primary-blue);
+  border: 1px solid var(--color-soft-blue-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.campus-docview-ai-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--color-dark-blue);
+}
+
+.campus-docview-ai-status {
+  font-size: 0.74rem;
+  color: var(--color-success);
+}
+
+.campus-docview-ai-tabs {
+  display: flex;
+  background-color: var(--color-slate-subtle);
+  border: 1px solid var(--color-border-slate);
+  border-radius: var(--radius-md);
+  padding: 3px;
+  gap: 3px;
+}
+
+.campus-docview-ai-tab {
+  flex: 1;
+  padding: 8px 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: none;
+  background: none;
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-align: center;
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.campus-docview-ai-tab--active {
+  background-color: var(--color-primary-blue);
+  color: white;
+}
+
+.campus-docview-ai-body {
+  padding: 18px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+
+.campus-docview-ai-snippet-box {
+  background-color: var(--color-slate-subtle);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  border: 1px solid var(--color-border-slate);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.campus-docview-ai-snippet-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  align-items: center;
+}
+
+.campus-docview-ai-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.04em;
+}
+
+.campus-docview-ai-clear {
+  background: none;
+  border: none;
+  font-size: 0.74rem;
+  color: var(--color-primary-blue);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.campus-docview-ai-snippet-content {
+  font-size: 0.82rem;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+}
+
+.campus-docview-ai-action-pills {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.campus-docview-ai-pill {
+  padding: 6px 12px;
+  min-height: 32px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-slate);
+  background-color: white;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.campus-docview-ai-pill--active {
+  background-color: var(--color-primary-blue);
+  color: white;
+  border-color: var(--color-primary-blue);
+}
+
+.campus-docview-ai-result-card {
+  background-color: var(--color-slate-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  border: 1px solid var(--color-border-slate);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.campus-docview-ai-result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.campus-docview-ai-result-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.88rem;
+  color: var(--color-dark-blue);
+}
+
+.campus-docview-sparkle-icon {
+  color: var(--color-accent-amber);
+  flex-shrink: 0;
+}
+
+.campus-docview-ai-regen-btn {
+  background: none;
+  border: none;
+  font-size: 0.74rem;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.campus-docview-ai-regen-btn:hover {
+  color: var(--color-primary-blue);
+}
+
+.campus-docview-ai-result-text {
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--color-text-primary);
+}
+
+/* Multilingual Box */
+.campus-docview-multilingual-box {
+  background-color: white;
+  border-radius: var(--radius-md);
+  padding: 12px;
+  border: 1px solid var(--color-border-slate);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.campus-docview-lang-label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--color-dark-blue);
+  margin-bottom: 8px;
+}
+
+.campus-docview-lang-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.campus-docview-lang-btn {
+  padding: 6px 10px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-slate);
+  background-color: white;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.campus-docview-lang-btn--active {
+  background-color: var(--color-primary-blue);
+  color: white;
+  border-color: var(--color-primary-blue);
+}
+
+.campus-docview-lang-output {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.82rem;
+  color: var(--color-text-primary);
+  line-height: 1.45;
+}
+
+.campus-docview-audio-btn {
+  background: none;
+  border: 1px solid var(--color-border-slate);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  padding: 6px;
+  min-width: 32px;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.campus-docview-audio-btn:hover {
+  background-color: var(--color-soft-blue);
+  color: var(--color-primary-blue);
+}
+
+.campus-docview-ai-prompts {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.campus-docview-prompts-label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+}
+
+.campus-docview-prompts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.campus-docview-prompts-list button {
+  text-align: left;
+  background: white;
+  border: 1px solid var(--color-border-slate);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  min-height: 36px;
+  font-size: 0.76rem;
+  color: var(--color-primary-blue);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  width: 100%;
+  box-sizing: border-box;
+}
+.campus-docview-prompts-list button:hover {
+  background-color: var(--color-soft-blue);
+  border-color: var(--color-soft-blue-border);
+}
+
+.campus-docview-ai-footer {
+  padding: 14px;
+  border-top: 1px solid var(--color-border-slate);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.campus-docview-chat-input-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-slate-subtle);
+  border: 1px solid var(--color-border-slate);
+  border-radius: var(--radius-md);
+  padding: 4px 8px;
+  gap: 6px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.campus-docview-chat-input-wrapper input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  padding: 8px 6px;
+  font-size: 0.88rem;
+  color: var(--color-text-primary);
+}
+.campus-docview-chat-input-wrapper input:focus {
+  outline: none;
+}
+
+.campus-docview-send-btn {
+  background-color: var(--color-primary-blue);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 8px;
+  min-width: 36px;
+  min-height: 36px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ===================================================
+   RESPONSIVE BREAKPOINTS: Document View & AI Assistant
+   =================================================== */
+
+@media (max-width: 1023px) {
+  .campus-docview-split {
+    grid-template-columns: 1fr;
+  }
+
+  .campus-docview-ai-drawer {
+    position: static;
+    top: auto;
+    max-height: none;
+  }
+
+  .campus-docview-body {
+    padding: 24px 20px;
+  }
+
+  .campus-docview-meta-banner {
+    padding: 12px 18px;
+  }
+
+  .campus-docview-reader-footer {
+    padding: 12px 18px;
+  }
+}
+
+@media (max-width: 639px) {
+  .campus-docview-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .campus-docview-header__right {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .campus-docview-header__right button {
+    flex: 1;
+  }
+
+  .campus-docview-body {
+    padding: 18px 14px;
+  }
+
+  .campus-docview-sec-h1 {
+    font-size: 1.25rem;
+  }
+
+  .campus-docview-sec-h2 {
+    font-size: 1.05rem;
+  }
+
+  .campus-docview-selected-text-box {
+    padding: 14px 16px;
+  }
+
+  .campus-docview-reader-footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 420px) {
+  .campus-docview-ai-tabs {
+    flex-direction: column;
+  }
+}
