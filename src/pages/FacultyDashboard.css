@@ -193,6 +193,36 @@
   border-bottom: none;
 }
 
+.campus-table-th-status {
+  text-align: center;
+  width: 90px;
+}
+
+.campus-table-td-status {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.campus-status-check-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #e7f8f0;
+  color: #25d366;
+  margin: 0 auto;
+  line-height: 1;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.campus-status-check-circle svg {
+  color: #25d366;
+  stroke: #25d366;
+}
+
 .campus-table tr:hover td {
   background-color: var(--color-soft-blue);
 }

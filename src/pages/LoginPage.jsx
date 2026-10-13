@@ -4,6 +4,7 @@ import { Mail, Lock, Eye, EyeOff, LogIn, ArrowRight } from 'lucide-react';
 import { Logo } from '../components/common/Logo';
 import { Input } from '../components/ui/Input';
 import { Button } from '../components/ui/Button';
+import { switchRole } from '../services/authService';
 import './AuthPages.css';
 
 export const LoginPage = () => {
@@ -20,10 +21,13 @@ export const LoginPage = () => {
     setTimeout(() => {
       setLoading(false);
       if (email.includes('admin')) {
+        switchRole('admin');
         navigate('/admin');
       } else if (email.includes('faculty')) {
+        switchRole('faculty');
         navigate('/faculty');
       } else {
+        switchRole('student');
         navigate('/student');
       }
     }, 400);
@@ -96,10 +100,9 @@ export const LoginPage = () => {
         <div className="campus-auth-demo-bar">
           <span className="campus-auth-demo-label">Demo Role Shortcuts:</span>
           <div className="campus-auth-demo-buttons">
-            <button type="button" onClick={() => navigate('/student')}>Student</button>
-            <button type="button" onClick={() => navigate('/faculty')}>Faculty</button>
-            <button type="button" onClick={() => navigate('/admin')}>Admin</button>
-            <button type="button" onClick={() => navigate('/pending')}>Pending</button>
+            <button type="button" onClick={() => { switchRole('student'); navigate('/student'); }}>Student</button>
+            <button type="button" onClick={() => { switchRole('faculty'); navigate('/faculty'); }}>Faculty</button>
+            <button type="button" onClick={() => { switchRole('admin'); navigate('/admin'); }}>Admin</button>
           </div>
         </div>
 

@@ -96,7 +96,7 @@ export const MOCK_STUDENT_DASHBOARD = {
 };
 
 export const MOCK_FACULTY_DASHBOARD = {
-  facultyName: "Dr. Arvind Sharma",
+  facultyName: "Ms. Nandhini R",
   department: "B.Sc Computer Science",
   designation: "Associate Professor",
   stats: {

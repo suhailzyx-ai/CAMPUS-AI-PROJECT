@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import { Logo } from '../common/Logo';
 import { Badge } from '../ui/Card';
+import { logout } from '../../services/authService';
 import './Navigation.css';
 
 export const StudentLayout = ({ children }) => {
@@ -67,7 +68,7 @@ export const StudentLayout = ({ children }) => {
           >
             {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
-          <Logo variant="default" showSubtitle={false} />
+          <Logo variant="default" showSubtitle={false} tag="KAHE" />
         </div>
 
         <div className="campus-header__right">
@@ -82,7 +83,10 @@ export const StudentLayout = ({ children }) => {
           </div>
           <button
             className="campus-header__logout"
-            onClick={() => navigate('/login')}
+            onClick={() => {
+              logout();
+              navigate('/login');
+            }}
             title="Log Out"
             aria-label="Log out of account"
           >
@@ -104,7 +108,7 @@ export const StudentLayout = ({ children }) => {
         {/* Sidebar Navigation */}
         <aside className={`campus-sidebar ${mobileMenuOpen ? 'campus-sidebar--mobile-open' : ''}`}>
           <div className="campus-sidebar__top-mobile-header">
-            <Logo variant="default" showSubtitle={false} />
+            <Logo variant="default" showSubtitle={false} tag="KAHE" />
             <button
               className="campus-sidebar__close-btn"
               onClick={() => setMobileMenuOpen(false)}
@@ -114,24 +118,26 @@ export const StudentLayout = ({ children }) => {
             </button>
           </div>
 
-          <div className="campus-sidebar__nav-group">
-            {navItems.map((item) => {
-              const Icon = item.icon;
-              return (
-                <NavLink
-                  key={item.path}
-                  to={item.path}
-                  end={item.path === '/student'}
-                  className={({ isActive }) =>
-                    `campus-sidebar__item ${isActive ? 'campus-sidebar__item--active' : ''}`
-                  }
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <Icon size={18} className="campus-sidebar__item-icon" />
-                  <span className="campus-sidebar__item-label">{item.label}</span>
-                </NavLink>
-              );
-            })}
+          <div className="campus-sidebar__content">
+            <div className="campus-sidebar__nav-group">
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <NavLink
+                    key={item.path}
+                    to={item.path}
+                    end={item.path === '/student'}
+                    className={({ isActive }) =>
+                      `campus-sidebar__item ${isActive ? 'campus-sidebar__item--active' : ''}`
+                    }
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <Icon size={18} className="campus-sidebar__item-icon" />
+                    <span className="campus-sidebar__item-label">{item.label}</span>
+                  </NavLink>
+                );
+              })}
+            </div>
           </div>
 
           <div className="campus-sidebar__banner">
@@ -187,7 +193,7 @@ export const FacultyLayout = ({ children }) => {
           >
             {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
-          <Logo variant="default" showSubtitle={false} />
+          <Logo variant="default" showSubtitle={false} tag="KAHE" />
           <Badge variant="faculty" size="md" className="campus-header__role-badge">Faculty Portal</Badge>
         </div>
 
@@ -197,13 +203,16 @@ export const FacultyLayout = ({ children }) => {
               <User size={18} />
             </div>
             <div className="campus-header__user-info">
-              <span className="campus-header__user-name">Dr. Arvind Sharma</span>
+              <span className="campus-header__user-name">Ms. Nandhini R</span>
               <span className="campus-header__user-sub">Faculty • Computer Science</span>
             </div>
           </div>
           <button
             className="campus-header__logout"
-            onClick={() => navigate('/login')}
+            onClick={() => {
+              logout();
+              navigate('/login');
+            }}
             title="Log Out"
             aria-label="Log out of account"
           >
@@ -223,7 +232,7 @@ export const FacultyLayout = ({ children }) => {
 
         <aside className={`campus-sidebar ${mobileMenuOpen ? 'campus-sidebar--mobile-open' : ''}`}>
           <div className="campus-sidebar__top-mobile-header">
-            <Logo variant="default" showSubtitle={false} />
+            <Logo variant="default" showSubtitle={false} tag="KAHE" />
             <button
               className="campus-sidebar__close-btn"
               onClick={() => setMobileMenuOpen(false)}
@@ -233,24 +242,26 @@ export const FacultyLayout = ({ children }) => {
             </button>
           </div>
 
-          <div className="campus-sidebar__nav-group">
-            {navItems.map((item) => {
-              const Icon = item.icon;
-              return (
-                <NavLink
-                  key={item.path}
-                  to={item.path}
-                  end={item.path === '/faculty'}
-                  className={({ isActive }) =>
-                    `campus-sidebar__item ${isActive ? 'campus-sidebar__item--active' : ''}`
-                  }
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <Icon size={18} className="campus-sidebar__item-icon" />
-                  <span className="campus-sidebar__item-label">{item.label}</span>
-                </NavLink>
-              );
-            })}
+          <div className="campus-sidebar__content">
+            <div className="campus-sidebar__nav-group">
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <NavLink
+                    key={item.path}
+                    to={item.path}
+                    end={item.path === '/faculty'}
+                    className={({ isActive }) =>
+                      `campus-sidebar__item ${isActive ? 'campus-sidebar__item--active' : ''}`
+                    }
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <Icon size={18} className="campus-sidebar__item-icon" />
+                    <span className="campus-sidebar__item-label">{item.label}</span>
+                  </NavLink>
+                );
+              })}
+            </div>
           </div>
         </aside>
 
@@ -304,7 +315,7 @@ export const AdminLayout = ({ children }) => {
           >
             {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
-          <Logo variant="default" showSubtitle={false} />
+          <Logo variant="default" showSubtitle={false} tag="KAHE" />
           <Badge variant="admin" size="md" className="campus-header__role-badge">ADMIN WORKSPACE</Badge>
         </div>
 
@@ -320,7 +331,10 @@ export const AdminLayout = ({ children }) => {
           </div>
           <button
             className="campus-header__logout"
-            onClick={() => navigate('/login')}
+            onClick={() => {
+              logout();
+              navigate('/login');
+            }}
             title="Log Out"
             aria-label="Log out of account"
           >
@@ -340,7 +354,7 @@ export const AdminLayout = ({ children }) => {
 
         <aside className={`campus-sidebar ${mobileMenuOpen ? 'campus-sidebar--mobile-open' : ''}`}>
           <div className="campus-sidebar__top-mobile-header">
-            <Logo variant="default" showSubtitle={false} />
+            <Logo variant="default" showSubtitle={false} tag="KAHE" />
             <button
               className="campus-sidebar__close-btn"
               onClick={() => setMobileMenuOpen(false)}
@@ -350,26 +364,28 @@ export const AdminLayout = ({ children }) => {
             </button>
           </div>
 
-          <div className="campus-sidebar__section-title">NAVIGATION</div>
-          <div className="campus-sidebar__nav-group">
-            {navItems.map((item) => {
-              const Icon = item.icon;
-              return (
-                <NavLink
-                  key={item.path}
-                  to={item.path}
-                  end={item.path === '/admin'}
-                  className={({ isActive }) =>
-                    `campus-sidebar__item ${isActive ? 'campus-sidebar__item--active' : ''}`
-                  }
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <Icon size={18} className="campus-sidebar__item-icon" />
-                  <span className="campus-sidebar__item-label">{item.label}</span>
-                  {item.badge && <span className="campus-sidebar__badge">{item.badge}</span>}
-                </NavLink>
-              );
-            })}
+          <div className="campus-sidebar__content">
+            <div className="campus-sidebar__section-title">NAVIGATION</div>
+            <div className="campus-sidebar__nav-group">
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <NavLink
+                    key={item.path}
+                    to={item.path}
+                    end={item.path === '/admin'}
+                    className={({ isActive }) =>
+                      `campus-sidebar__item ${isActive ? 'campus-sidebar__item--active' : ''}`
+                    }
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <Icon size={18} className="campus-sidebar__item-icon" />
+                    <span className="campus-sidebar__item-label">{item.label}</span>
+                    {item.badge && <span className="campus-sidebar__badge">{item.badge}</span>}
+                  </NavLink>
+                );
+              })}
+            </div>
           </div>
 
           <div className="campus-sidebar__version">

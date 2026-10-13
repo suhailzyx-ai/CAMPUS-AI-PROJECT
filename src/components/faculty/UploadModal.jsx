@@ -4,15 +4,16 @@ import { Modal } from '../ui/Modal';
 import { Button } from '../ui/Button';
 import { Input, Select } from '../ui/Input';
 import { DEPARTMENTS_LIST, ACADEMIC_YEARS_LIST } from '../../data/mockData';
+import { createDocument } from '../../services/documentStorageService';
 import './UploadModal.css';
 
-export const UploadModal = ({ isOpen, onClose }) => {
+export const UploadModal = ({ isOpen, onClose, onSuccess }) => {
   const [selectedFile, setSelectedFile] = useState({
     name: 'CS201_Data_Structures_Trees_Graphs.pdf',
     size: '3.4 MB',
     status: 'Ready to index'
   });
-  const [facultyName, setFacultyName] = useState('Dr. Arvind Sharma');
+  const [facultyName, setFacultyName] = useState('Ms. Nandhini R');
   const [department, setDepartment] = useState('BSc CS');
   const [year, setYear] = useState('2nd Year');
   const [subjectName, setSubjectName] = useState('Data Structures & Algorithms');
@@ -22,13 +23,32 @@ export const UploadModal = ({ isOpen, onClose }) => {
   );
   const [loading, setLoading] = useState(false);
 
-  const handlePublish = (e) => {
+  const handlePublish = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
+
+    try {
+      const newDoc = await createDocument({
+        title: subjectName ? `${subjectName} – Lecture Notes` : 'New Academic Material',
+        department,
+        year,
+        subjectName,
+        subjectCode,
+        description,
+        fileName: selectedFile?.name || 'document.pdf',
+        fileSize: selectedFile?.size || '3.4 MB',
+        fileType: 'PDF'
+      });
+
+      if (onSuccess) {
+        onSuccess(newDoc, `"${newDoc.title}" uploaded and published successfully!`);
+      }
       onClose();
-    }, 600);
+    } catch (err) {
+      console.error('Failed to create document:', err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

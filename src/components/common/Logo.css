@@ -1,7 +1,7 @@
 .campus-logo {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   text-decoration: none;
   user-select: none;
 }
@@ -16,6 +16,14 @@
   justify-content: center;
   color: var(--color-white);
   box-shadow: 0 2px 6px rgba(0, 86, 210, 0.2);
+  flex-shrink: 0;
+}
+
+.campus-logo__text-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
 }
 
 .campus-logo__title {
@@ -24,10 +32,31 @@
   letter-spacing: -0.02em;
   color: var(--color-dark-blue);
   line-height: 1.1;
+  text-align: left;
+  white-space: nowrap;
 }
 
 .campus-logo__title-ai {
   color: var(--color-primary-blue);
+}
+
+.campus-logo__tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  background-color: #EAF2FF;
+  color: #075bce;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+  border: 1px solid #D0E2FF;
+  margin-top: 2px;
+  user-select: none;
+  text-transform: uppercase;
 }
 
 .campus-logo__subtitle {
@@ -35,6 +64,9 @@
   font-size: 0.72rem;
   color: var(--color-text-secondary);
   font-weight: 500;
+  text-align: left;
+  white-space: nowrap;
+  margin-top: 2px;
 }
 
 /* Light variant for dark headers if needed */

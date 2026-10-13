@@ -1,0 +1,113 @@
+.campus-doc-actions-menu {
+  position: fixed;
+  z-index: 1200;
+  min-width: 210px;
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border-slate);
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 25px -4px rgba(15, 47, 95, 0.16), 0 4px 10px -2px rgba(15, 23, 42, 0.08);
+  padding: 6px;
+  animation: fadeInMenu 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes fadeInMenu {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.campus-doc-actions-menu__header {
+  padding: 8px 10px 6px;
+  border-bottom: 1px solid var(--color-border-subtle);
+  margin-bottom: 4px;
+}
+
+.campus-doc-actions-menu__doc-title {
+  display: block;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 190px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.campus-doc-actions-menu__group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.campus-doc-actions-menu__divider {
+  height: 1px;
+  background-color: var(--color-border-subtle);
+  margin: 4px 2px;
+}
+
+.campus-doc-actions-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 10px;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-primary);
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.campus-doc-actions-item:hover {
+  background-color: var(--color-soft-blue);
+  color: var(--color-primary-blue);
+}
+
+.campus-doc-actions-item__icon {
+  color: var(--color-text-secondary);
+  flex-shrink: 0;
+  transition: color var(--transition-fast);
+}
+
+.campus-doc-actions-item:hover .campus-doc-actions-item__icon {
+  color: var(--color-primary-blue);
+}
+
+.campus-doc-actions-item__icon--amber {
+  color: var(--color-accent-amber);
+}
+
+.campus-doc-actions-item__icon--blue {
+  color: var(--color-primary-blue);
+}
+
+.campus-doc-actions-item--danger {
+  color: var(--color-destructive);
+}
+
+.campus-doc-actions-item--danger .campus-doc-actions-item__icon {
+  color: var(--color-destructive);
+}
+
+.campus-doc-actions-item--danger:hover {
+  background-color: #FEE2E2;
+  color: #B91C1C;
+}
+
+.campus-doc-actions-item--danger:hover .campus-doc-actions-item__icon {
+  color: #B91C1C;
+}

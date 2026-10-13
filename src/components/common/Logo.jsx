@@ -7,6 +7,7 @@ export const Logo = ({
   variant = 'default', // 'default' (Dark text), 'light' (White text), 'compact'
   subtitle = 'Your intelligent academic companion',
   showSubtitle = false,
+  tag = null,
   className = ''
 }) => {
   return (
@@ -18,6 +19,9 @@ export const Logo = ({
         <div className="campus-logo__title">
           Campus <span className="campus-logo__title-ai">AI</span>
         </div>
+        {tag && (
+          <span className="campus-logo__tag">{tag}</span>
+        )}
         {showSubtitle && subtitle && (
           <span className="campus-logo__subtitle">{subtitle}</span>
         )}
