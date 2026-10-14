@@ -9,7 +9,10 @@ export const AIResponseCard = ({
   example = '',
   isLoading = false,
   onRegenerate,
-  error = null
+  error = null,
+  learningLevel,
+  preserveTechnicalTerms,
+  prompt
 }) => {
   const [copied, setCopied] = useState(false);
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
@@ -81,6 +84,16 @@ export const AIResponseCard = ({
           <Sparkles size={16} className="campus-ai-sparkle-icon" />
           <strong>{title}</strong>
           {badge && <span className="campus-ai-badge-pill">{badge}</span>}
+          {learningLevel && (
+            <span className={`campus-ai-level-pill campus-ai-level-pill--${learningLevel.toLowerCase()}`}>
+              {learningLevel}
+            </span>
+          )}
+          {preserveTechnicalTerms && (
+            <span className="campus-ai-terms-pill" title="English Technical Terms Preserved">
+              Terms Preserved (EN)
+            </span>
+          )}
         </div>
         <div className="campus-ai-header-actions">
           {onRegenerate && (

@@ -8,7 +8,9 @@ import {
   Globe2,
   X,
   Search,
-  ArrowRight
+  ArrowRight,
+  GraduationCap,
+  Code2
 } from 'lucide-react';
 import { LanguageSelector } from './LanguageSelector';
 import { AIResponseCard } from './AIResponseCard';
@@ -19,7 +21,8 @@ export const ACTIONS_CONFIG = [
   { id: 'Translate', label: 'Translate', icon: Languages, desc: 'Accurate regional translation' },
   { id: 'Simplify', label: 'Simplify', icon: Feather, desc: 'Plain language with key terms' },
   { id: 'Word Definition', label: 'Word Definition', icon: BookOpen, desc: 'Define difficult terms with examples' },
-  { id: 'Multilingual Explanation', label: 'Multilingual Explanation', icon: Globe2, desc: 'Deep concept explanation in mother tongue' }
+  { id: 'Multilingual Explanation', label: 'Multilingual Explanation', icon: Globe2, desc: 'Deep concept explanation in mother tongue' },
+  { id: 'Technical Term Preservation', label: 'Technical Term Preservation', icon: Code2, desc: 'Preserve English technical terms (Inheritance, Polymorphism, etc.)' }
 ];
 
 export const SelectedTextPanel = ({
@@ -33,10 +36,21 @@ export const SelectedTextPanel = ({
   error,
   selectedLanguage,
   onChangeLanguage,
+  learningLevel = 'Beginner',
+  onChangeLearningLevel,
+  preserveTechnicalTerms = true,
+  onTogglePreserveTechnicalTerms,
   onRegenerate
 }) => {
   const [targetWord, setTargetWord] = useState('');
   const [customWordInput, setCustomWordInput] = useState('');
+
+  // Fallback internal state in case parent doesn't provide handlers
+  const [internalLevel, setInternalLevel] = useState('Beginner');
+  const [internalPreserveTerms, setInternalPreserveTerms] = useState(true);
+
+  const effectiveLevel = learningLevel !== undefined ? learningLevel : internalLevel;
+  const effectivePreserveTerms = preserveTechnicalTerms !== undefined ? preserveTechnicalTerms : internalPreserveTerms;
 
   const hasSelection = Boolean(selectedText && selectedText.trim().length > 0);
 
@@ -67,29 +81,101 @@ export const SelectedTextPanel = ({
 
   const handleActionClick = (actionId) => {
     if (!hasSelection) return;
+    if (actionId === 'Technical Term Preservation') {
+      const nextVal = !effectivePreserveTerms;
+      if (onTogglePreserveTechnicalTerms) {
+        onTogglePreserveTechnicalTerms(nextVal);
+      } else {
+        setInternalPreserveTerms(nextVal);
+      }
+      onTriggerAction('Technical Term Preservation', {
+        language: selectedLanguage,
+        targetWord,
+        learningLevel: effectiveLevel,
+        preserveTechnicalTerms: nextVal
+      });
+      return;
+    }
     const word = actionId === 'Word Definition' ? (targetWord || wordsInPassage[0] || '') : targetWord;
-    onTriggerAction(actionId, { language: selectedLanguage, targetWord: word });
+    onTriggerAction(actionId, {
+      language: selectedLanguage,
+      targetWord: word,
+      learningLevel: effectiveLevel,
+      preserveTechnicalTerms: effectivePreserveTerms
+    });
+  };
+
+  const handleLevelChange = (newLevel) => {
+    if (onChangeLearningLevel) {
+      onChangeLearningLevel(newLevel);
+    } else {
+      setInternalLevel(newLevel);
+    }
+
+    if (hasSelection) {
+      const word = currentAction === 'Word Definition' ? (targetWord || wordsInPassage[0] || '') : targetWord;
+      onTriggerAction(currentAction || 'Explain', {
+        language: selectedLanguage,
+        targetWord: word,
+        learningLevel: newLevel,
+        preserveTechnicalTerms: effectivePreserveTerms
+      });
+    }
+  };
+
+  const handleToggleTerms = () => {
+    const nextVal = !effectivePreserveTerms;
+    if (onTogglePreserveTechnicalTerms) {
+      onTogglePreserveTechnicalTerms(nextVal);
+    } else {
+      setInternalPreserveTerms(nextVal);
+    }
+
+    if (hasSelection) {
+      const word = currentAction === 'Word Definition' ? (targetWord || wordsInPassage[0] || '') : targetWord;
+      onTriggerAction(currentAction || 'Explain', {
+        language: selectedLanguage,
+        targetWord: word,
+        learningLevel: effectiveLevel,
+        preserveTechnicalTerms: nextVal
+      });
+    }
   };
 
   const handleLanguageChange = (newLang) => {
     onChangeLanguage(newLang);
-    // If current action is Translate or Multilingual Explanation, regenerate immediately
-    if (currentAction === 'Translate' || currentAction === 'Multilingual Explanation') {
-      onTriggerAction(currentAction, { language: newLang, targetWord });
+    // If current action is Translate, Multilingual Explanation, or Technical Term Preservation, regenerate immediately
+    if (currentAction === 'Translate' || currentAction === 'Multilingual Explanation' || currentAction === 'Technical Term Preservation') {
+      onTriggerAction(currentAction, {
+        language: newLang,
+        targetWord,
+        learningLevel: effectiveLevel,
+        preserveTechnicalTerms: effectivePreserveTerms
+      });
     }
   };
 
   const handleWordSelect = (word) => {
     setTargetWord(word);
     setCustomWordInput(word);
-    onTriggerAction('Word Definition', { language: selectedLanguage, targetWord: word });
+    onTriggerAction('Word Definition', {
+      language: selectedLanguage,
+      targetWord: word,
+      learningLevel: effectiveLevel,
+      preserveTechnicalTerms: effectivePreserveTerms
+    });
   };
 
   const handleWordSubmit = (e) => {
     e.preventDefault();
     if (!customWordInput.trim()) return;
     setTargetWord(customWordInput.trim());
-    onTriggerAction('Word Definition', { language: selectedLanguage, targetWord: customWordInput.trim() });
+    onTriggerAction('Word Definition', {
+      language: selectedLanguage,
+      targetWord: customWordInput.trim(),
+      learningLevel: effectiveLevel,
+      preserveTechnicalTerms: effectivePreserveTerms
+    });
   };
 
   return (
@@ -151,12 +237,13 @@ export const SelectedTextPanel = ({
         <div className="campus-selected-action-grid">
           {ACTIONS_CONFIG.map((act) => {
             const Icon = act.icon;
+            const isTermPreserve = act.id === 'Technical Term Preservation';
             const isActive = currentAction === act.id && hasSelection;
             return (
               <button
                 key={act.id}
                 type="button"
-                className={`campus-selected-action-btn ${isActive ? 'campus-selected-action-btn--active' : ''}`}
+                className={`campus-selected-action-btn ${isActive ? 'campus-selected-action-btn--active' : ''} ${isTermPreserve ? 'campus-selected-action-btn--term-preserve' : ''}`}
                 disabled={!hasSelection || isLoading}
                 onMouseDown={(e) => {
                   // Prevent document selection collapse on click
@@ -165,16 +252,61 @@ export const SelectedTextPanel = ({
                 onClick={() => handleActionClick(act.id)}
                 title={act.desc}
               >
-                <Icon size={14} className="campus-selected-action-icon" />
-                <span className="campus-selected-action-label">{act.label}</span>
+                <div className="campus-selected-action-content">
+                  <Icon size={14} className="campus-selected-action-icon" />
+                  <span className="campus-selected-action-label">{act.label}</span>
+                </div>
+                {isTermPreserve && (
+                  <span className={`campus-action-toggle-tag ${effectivePreserveTerms ? 'campus-action-toggle-tag--on' : 'campus-action-toggle-tag--off'}`}>
+                    {effectivePreserveTerms ? 'ON' : 'OFF'}
+                  </span>
+                )}
               </button>
             );
           })}
         </div>
+
+        {/* Personalized Learning Level Selector Card (Beginner / Intermediate / Advanced) */}
+        <div className="campus-selected-preferences-card">
+          <div className="campus-pref-group">
+            <div className="campus-pref-header">
+              <div className="campus-pref-label-row">
+                <GraduationCap size={14} className="campus-pref-icon" />
+                <span className="campus-pref-title">Personalized Learning Level</span>
+              </div>
+              <span className="campus-pref-current-desc">
+                {effectiveLevel === 'Beginner' && 'Beginner: Simple words & basic examples'}
+                {effectiveLevel === 'Intermediate' && 'Intermediate: Clear technical details & examples'}
+                {effectiveLevel === 'Advanced' && 'Advanced: In-depth explanations & complex examples'}
+              </span>
+            </div>
+
+            <div className="campus-level-segmented-control" role="group" aria-label="Personalized Learning Level">
+              {[
+                { id: 'Beginner', label: 'Beginner', tip: 'Beginner: simple words and basic examples' },
+                { id: 'Intermediate', label: 'Intermediate', tip: 'Intermediate: clear explanations with technical details and examples' },
+                { id: 'Advanced', label: 'Advanced', tip: 'Advanced: in-depth explanations, technical accuracy, and complex examples' }
+              ].map((lvl) => {
+                const isSelected = effectiveLevel === lvl.id;
+                return (
+                  <button
+                    key={lvl.id}
+                    type="button"
+                    className={`campus-level-btn ${isSelected ? 'campus-level-btn--active' : ''}`}
+                    onClick={() => handleLevelChange(lvl.id)}
+                    title={lvl.tip}
+                  >
+                    <span className="campus-level-btn-text">{lvl.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Sub-controls based on active action */}
-      {hasSelection && (currentAction === 'Translate' || currentAction === 'Multilingual Explanation') && (
+      {hasSelection && (currentAction === 'Translate' || currentAction === 'Multilingual Explanation' || currentAction === 'Technical Term Preservation') && (
         <div className="campus-selected-subcontrol-box">
           <LanguageSelector
             selectedLanguage={selectedLanguage}
@@ -231,6 +363,9 @@ export const SelectedTextPanel = ({
             isLoading={isLoading}
             error={error}
             onRegenerate={onRegenerate}
+            learningLevel={activeResult?.learningLevel || effectiveLevel}
+            preserveTechnicalTerms={activeResult?.preserveTechnicalTerms !== undefined ? activeResult?.preserveTechnicalTerms : effectivePreserveTerms}
+            prompt={activeResult?.prompt}
           />
         </div>
       )}

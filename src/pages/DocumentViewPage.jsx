@@ -94,6 +94,8 @@ export const DocumentViewPage = ({ role: roleProp }) => {
   const [selectedText, setSelectedText] = useState('');
   const [currentSelectedAction, setCurrentSelectedAction] = useState('Explain');
   const [selectedLanguage, setSelectedLanguage] = useState('English');
+  const [learningLevel, setLearningLevel] = useState('Beginner');
+  const [preserveTechnicalTerms, setPreserveTechnicalTerms] = useState(true);
   const [selectedTextResult, setSelectedTextResult] = useState(null);
   const [isSelectedTextLoading, setIsSelectedTextLoading] = useState(false);
   const [selectedTextError, setSelectedTextError] = useState(null);
@@ -239,6 +241,8 @@ export const DocumentViewPage = ({ role: roleProp }) => {
 
     const lang = options.language || selectedLanguage;
     const word = options.targetWord || '';
+    const level = options.learningLevel || learningLevel;
+    const preserveTerms = options.preserveTechnicalTerms !== undefined ? options.preserveTechnicalTerms : preserveTechnicalTerms;
 
     // Race condition prevention: assign request counter ID
     const currentRequestId = ++requestIdRef.current;
@@ -252,7 +256,9 @@ export const DocumentViewPage = ({ role: roleProp }) => {
         action: actionId,
         text: textToProcess,
         language: lang,
-        targetWord: word
+        targetWord: word,
+        learningLevel: level,
+        preserveTechnicalTerms: preserveTerms
       });
 
       // Discard stale responses if a newer request was dispatched in the meantime
@@ -271,7 +277,7 @@ export const DocumentViewPage = ({ role: roleProp }) => {
         setIsSelectedTextLoading(false);
       }
     }
-  }, [selectedText, selectedLanguage]);
+  }, [selectedText, selectedLanguage, learningLevel, preserveTechnicalTerms]);
 
   const handleClearSelection = () => {
     activeSelectionRef.current = '';
@@ -288,7 +294,11 @@ export const DocumentViewPage = ({ role: roleProp }) => {
     const sample = doc.selectedTextSnippet;
     activeSelectionRef.current = sample;
     setSelectedText(sample);
-    handleTriggerSelectedAction('Explain', { text: sample });
+    handleTriggerSelectedAction('Explain', {
+      text: sample,
+      learningLevel,
+      preserveTechnicalTerms
+    });
   };
 
   // ----------------------------------------------------
@@ -458,7 +468,22 @@ export const DocumentViewPage = ({ role: roleProp }) => {
 
     setSelectedText(textToUse);
     setActiveAiTab('selectedText');
-    handleTriggerSelectedAction(actionId, { text: textToUse });
+
+    if (actionId === 'Technical Term Preservation') {
+      const nextPreserve = !preserveTechnicalTerms;
+      setPreserveTechnicalTerms(nextPreserve);
+      handleTriggerSelectedAction('Technical Term Preservation', {
+        text: textToUse,
+        learningLevel,
+        preserveTechnicalTerms: nextPreserve
+      });
+    } else {
+      handleTriggerSelectedAction(actionId, {
+        text: textToUse,
+        learningLevel,
+        preserveTechnicalTerms
+      });
+    }
 
     // Open bottom-sheet popup on mobile screens
     setIsMobileAiOpen(true);
@@ -553,6 +578,7 @@ export const DocumentViewPage = ({ role: roleProp }) => {
             <TextSelectionToolbar
               position={toolbarPosition}
               onActionClick={handleFloatingToolbarAction}
+              preserveTechnicalTerms={preserveTechnicalTerms}
               onClose={() => setToolbarPosition({ visible: false, top: 0, left: 0, placement: 'above' })}
             />
 
@@ -808,7 +834,31 @@ export const DocumentViewPage = ({ role: roleProp }) => {
                 error={selectedTextError}
                 selectedLanguage={selectedLanguage}
                 onChangeLanguage={setSelectedLanguage}
-                onRegenerate={() => handleTriggerSelectedAction(currentSelectedAction, { language: selectedLanguage })}
+                learningLevel={learningLevel}
+                onChangeLearningLevel={(newLevel) => {
+                  setLearningLevel(newLevel);
+                  if (selectedText) {
+                    handleTriggerSelectedAction(currentSelectedAction || 'Explain', {
+                      learningLevel: newLevel,
+                      preserveTechnicalTerms
+                    });
+                  }
+                }}
+                preserveTechnicalTerms={preserveTechnicalTerms}
+                onTogglePreserveTechnicalTerms={(newToggle) => {
+                  setPreserveTechnicalTerms(newToggle);
+                  if (selectedText) {
+                    handleTriggerSelectedAction(currentSelectedAction || 'Explain', {
+                      learningLevel,
+                      preserveTechnicalTerms: newToggle
+                    });
+                  }
+                }}
+                onRegenerate={() => handleTriggerSelectedAction(currentSelectedAction, {
+                  language: selectedLanguage,
+                  learningLevel,
+                  preserveTechnicalTerms
+                })}
               />
             )}
 
